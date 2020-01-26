@@ -1,0 +1,90 @@
+<form [formGroup]="signupForm">
+  <div>
+    <h1>Sign Up</h1>
+    <p>Please fill in this form.</p>
+
+    <label for="firstname"><b>First Name</b></label>
+    <input type="text" formControlName="firstname" placeholder="Name" name="firstname" required (keypress)="preventSpace($event)">
+    <div *ngIf="signupForm.get('firstname').errors && (signupForm.get('firstname').touched || signupForm.get('firstname').durty)">
+        <div *ngIf="signupForm.controls['firstname'].hasError('required') ">
+          <span style="color: red;">First Name is Required</span>
+        </div>
+        </div>
+        <span *ngIf="signupForm.get('firstname').hasError('pattern')" style="color:red; font-size: 12px">Invalid Name</span>
+
+    <br>
+    <br>
+
+    <label for="lastname"><b>Last Name</b></label>
+    <input type="text" formControlName="lastname" placeholder="Name" name="lastname" required (keypress)="preventSpace($event)">
+    <div *ngIf="signupForm.get('lastname').errors && (signupForm.get('lastname').touched || signupForm.get('lastname').durty)">
+        <div *ngIf="signupForm.controls['lastname'].hasError('required') ">
+          <span style="color: red;">Last Name is Required</span>
+        </div>
+        </div>
+        <span *ngIf="signupForm.get('lastname').hasError('pattern')" style="color:red; font-size: 12px">Invalid Name</span>
+
+        <br>
+        <br>
+
+    <label for="email"><b>Email</b></label>
+    <input type="text" formControlName="email" placeholder="abc@gmail.com" name="email" required>
+    <div *ngIf="signupForm.get('email').errors && (signupForm.get('email').touched || signupForm.get('email').durty)">
+        <div *ngIf="signupForm.controls['email'].hasError('required') ">
+          <span style="color: red;">Email is Required</span>
+        </div>
+        </div>
+        <span *ngIf="signupForm.get('email').hasError('pattern')" style="color:red; font-size: 12px">Invalid Email</span>
+
+    <br>
+
+    <label for="phonenumber"><b>Phone Number</b></label>
+    <input type="text" formControlName="phonenumber" placeholder="9876543210" name="phonenumber" required>
+    <div *ngIf="signupForm.get('phonenumber').errors && (signupForm.get('phonenumber').touched || signupForm.get('phonenumber').durty)">
+        <div *ngIf="signupForm.controls['phonenumber'].hasError('required') ">
+          <span style="color: red;">Phone Number is Required</span>
+        </div>
+        </div>
+        <span *ngIf="signupForm.get('phonenumber').hasError('pattern')" style="color:red; font-size: 12px">Invalid Phone Number</span>
+
+    <br>
+    <br>
+
+    <label for="mydate"><b>Date Of Birth</b></label><br>
+    <input id="mydate" name="mydate" formControlName="mydate" type="date" required />
+    <br>
+    <br>
+
+    <label for="password"><b>Password</b></label>
+    <input type="password" formControlName="password" id="txtpassword" name="password" placeholder="password" required>
+    <div *ngIf="signupForm.get('password').errors && (signupForm.get('password').touched || signupForm.get('password').durty)">
+        <div *ngIf="signupForm.controls['password'].hasError('required') ">
+          <span style="color: red;">Password is Required</span>
+        </div>
+        </div>
+        <span *ngIf="signupForm.get('password').hasError('pattern')" style="color:red; font-size: 12px">Invalid Password</span>
+          
+        <br>
+          
+        <label for="confirmpassword"><b>Confirm Password</b></label>
+    <input type="password" formControlName="confirmpassword" id="txtconfirmpassword" placeholder="confirm password" name="confirmpassword" required>
+    <div *ngIf="signupForm.get('confirmpassword').errors && (signupForm.get('confirmpassword').touched || signupForm.get('confirmpassword').durty)">
+        <div *ngIf="signupForm.controls['confirmpassword'].hasError('required') ">
+            <!-- <div *ngIf="(signupForm.get('password') != signupForm.get('confirmpassword'))">Password do not match</div> -->
+            <!-- <div *ngIf="signupForm.get('confirmpassword')?.mismatch"></div> -->
+
+          <span style="color: red;">Password is Required</span>
+        </div>
+        </div>
+        <span *ngIf="signupForm.get('confirmpassword').hasError('pattern')" style="color:red; font-size: 12px">Invalid Password</span>
+        <br>
+
+    <br>
+        <button type="button" routerLink="/login" (click)="singup()" [disabled]="!signupForm.valid">Register</button>
+        <!-- <button type="button" routerLink="/login">Login</button> -->
+
+
+      </div>
+    </form>
+
+

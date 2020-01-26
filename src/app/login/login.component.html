@@ -1,0 +1,27 @@
+<h2>Login</h2>
+<form  [formGroup]="login">
+<div>
+  <label for="email"><b>Username</b></label>
+  <input type="text" formControlName="email" placeholder="Email" name="email" required>
+  <div *ngIf="login.get('email').errors && (login.get('email').touched || login.get('email').durty)">
+    <div *ngIf="login.controls['email'].hasError('required') ">
+      <span style="color: red;">Email Required</span>
+    </div>
+    </div>
+  <br>
+  <label for="password" ><b>Password</b></label>
+  <input type="password" formControlName="password" placeholder="password" name="password" required>
+  <div *ngIf="login.get('password').errors && (login.get('password').touched || login.get('password').durty)">
+    <div *ngIf="login.controls['password'].hasError('required') ">
+      <span style="color: red;">Password Required</span>
+    </div>
+    </div>
+  <br>
+  <label for="rememberMe"><b>Remember Me</b></label>
+    <input type="checkbox" checked="checked" formControlName="checkbox" name="rememberMe" >
+    <br>
+  <nav>
+      <button type="button" (click)="loginform()">Login</button>
+  </nav>
+</div>
+</form>
